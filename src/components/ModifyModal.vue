@@ -95,6 +95,7 @@ function userUpdate(){
         variant="outlined"
         @update:model-value="handleInput">
       </v-text-field>
+      <!-- click 리스너를 통해 onClick 이벤트를 발생 시킨 후 처리 -->
       <v-btn class="mt-2" type="submit" @click="userUpdate" block>Submit</v-btn>
     </v-form>
   </v-sheet>

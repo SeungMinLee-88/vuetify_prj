@@ -14,6 +14,7 @@ export const store = new Vuex.Store({
     roleUserSave: []
 
   },
+  /* state를 통해 선언된 상태를 mutations를 통해서 변경 */
   mutations: {
     showModifyModal (state) {
       state.showModifyModal = !state.showModifyModal
@@ -80,6 +81,7 @@ export const store = new Vuex.Store({
         console.log('error : ' + error)
       });
     },
+    /* 추가 대상 Role 리스트 */
     async getRoleList ({ state, commit }) {
       await Axios.post('http://localhost:8090/api/v1/user/roleList',
         state.exceptRoleList,
@@ -121,6 +123,7 @@ export const store = new Vuex.Store({
         console.log('error : ' + error)
       });
     },
+    /* async 사용하는 비동기 함수는 actions을 통해 처리 */
     async userDelete ({ state, commit }) {
       await Axios.delete(`http://localhost:8090/api/v1/user/delete/${state.userId}`,
         {
