@@ -51,16 +51,17 @@ function handlePageClick(pageVal) {
 }
 ```
 <video width="520" height="240" controls>
-  <source src="https://github.com/user-attachments/assets/aa33c65f-a520-45c3-b863-502236d786da" type="video/mp4">
+  <source src="https://github-production-user-asset-6210df.s3.amazonaws.com/84305801/447817991-aa33c65f-a520-45c3-b863-502236d786da.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250527%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250527T080507Z&X-Amz-Expires=300&X-Amz-Signature=e7f331fb3af5cbba875ae84ec09196cf26e754128d53834a89205c72b868cb87&X-Amz-SignedHeaders=host" type="video/mp4">
 </video>
 
 자식과 부모 사이는 하향식 단방향 바인딩 형태 이어야 하므로 클릭 이벤트 등에 대한 처리는 **emit** 이벤트를 호출 하여 구현 하였다.
 
 #### 1.2 vuex 라이브러리 사용 방식
-여러 컴포넌트간에 저장소 공유를 위해 Vue.js 애플리케이션에 대한 상태 관리 패턴, 라이브러리인 vuex를 사용해 보았으며 state와 mutations, 비동기 작업 처리를 위한 actions를 store.js에 선언 하여 사용 하였다.
-참고 - <https://v3.vuex.vuejs.org/kr/>
+여러 컴포넌트간에 저장소 공유를 위해 Vue.js 애플리케이션에 대한 상태 관리 패턴, 라이브러리인 vuex를 사용해 보았으며 state와 mutations, 비동기 작업 처리를 위한 actions를 store.js에 선언 하여 사용 하였다.  
+- 참고  
+<https://v3.vuex.vuejs.org/kr/>
 
-- store.js
+store.js
 ```js
 export const store = new Vuex.Store({
   state: {
@@ -115,7 +116,7 @@ function userUpdate(){
   store.dispatch('userUpdate')
 }
 ```
-2. 사용자는 여러 Role을 가질 수 있으며 해당 Role을 가진 사용자가 다수 일수 가 있어 중간 관계 테이블을 추가하여 사용자와 Role관리 하도록 구성하였으며
+1. 사용자는 여러 Role을 가질 수 있으며 해당 Role을 가진 사용자가 다수 일수 가 있어 중간 관계 테이블을 추가하여 사용자와 Role관리 하도록 구성하였으며
 ```java
 .requestMatchers("/api/v1/admin/*").hasAnyRole("ADMIN", "MANAGER")
 .anyRequest().authenticated());
@@ -138,7 +139,7 @@ function userUpdate(){
 Role리스트를 호출 시 현재 팝업창에서 가져온 사용자의 Role 리스트를 제외한 리스트를 보여 주도록 하였다. Role 추가 후 저장 시 Role 데이터를 가진 state를 request 값으로 전달하여 사용자의 Role 정보가 업데이트 되도록 하였다.
 
 <video width="520" height="240" controls>
-  <source src="https://github.com/user-attachments/assets/0b79938e-90ba-4baf-844c-a286309758f4" type="video/mp4">
+  <source src="https://github-production-user-asset-6210df.s3.amazonaws.com/84305801/447817991-aa33c65f-a520-45c3-b863-502236d786da.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250527%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250527T080011Z&X-Amz-Expires=300&X-Amz-Signature=80573e92bd738dc70f2be48b38e5d13424cb10554c9d56d5c5d83dde6b999660&X-Amz-SignedHeaders=host" type="video/mp4">
 </video>
 
 ```js
