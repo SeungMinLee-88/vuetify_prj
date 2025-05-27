@@ -39,7 +39,7 @@ const getData = async () => {
 await Axios.get('http://localhost:8090/api/v1/user/userList', {
   params: {
         page: currentPage.value,
-        size: '3',
+        size: '5',
         sort: 'createdTime,desc',
         searchKey: searchFiled.value,
         searchValue: searchTxt.value

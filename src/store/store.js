@@ -2,16 +2,16 @@ import Vuex from 'vuex'
 import Axios from 'axios';
 export const store = new Vuex.Store({
   state: {
-      count: 0,
-      count2: 10,
-      showModifyModal: false,
-      showRoleListModal: false,
-      userId: 0,
-      userDetail: [],
-      exceptRoleList: [0],
-      roleList: [],
-      updateRoleList: [],
-      roleUserSave: []
+    count: 0,
+    count2: 10,
+    showModifyModal: false,
+    showRoleListModal: false,
+    userId: 0,
+    userDetail: [],
+    exceptRoleList: [0],
+    roleList: [],
+    updateRoleList: [],
+    roleUserSave: []
 
   },
   mutations: {
@@ -20,7 +20,7 @@ export const store = new Vuex.Store({
     },
     showRoleListModal (state) {
       state.showRoleListModal = !state.showRoleListModal
-  },
+    },
     setUserId (state, userId) {
       state.userId = userId
     }
