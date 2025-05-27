@@ -4,10 +4,13 @@
 # - 주요 구현 기능
 기능은 사용자의 리스트를 보여주는 페이지와 사용자의 정보를 변경하는 기능(사용자 이름과, Role 정보만 변경), 사용자를 삭제 하는 기능을 간단히 구현 하였다.
 
-또한 페이지의 Vue.js를 위한 디자인 UI 프레임워크 vuetify를 사용하여 구현 하였다.
-참고 - <https://vuetifyjs.com/en/>
+또한 페이지의 Vue.js를 위한 디자인 UI 프레임워크 vuetify를 사용하여 구현으며 백엔드 부분의 데이터 처리를 위해 Axios 라이브러리를 사용 하였다.하였다.
 
-![Alt text](./img/1.page.PNG)
+- 참고  
+<https://vuetifyjs.com/en/>  
+<https://axios-http.com/kr/docs/intro>
+
+[![Alt text](./img/1.page.PNG)](https://github-production-user-asset-6210df.s3.amazonaws.com/84305801/447774707-3389882d-8845-4a54-80fa-421c0d875206.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250527%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250527T055310Z&X-Amz-Expires=300&X-Amz-Signature=07a266bbe0e1bac3fe7ab98ce3d87bb78dcddd88dcaea5c6f20b7695df1570f4&X-Amz-SignedHeaders=host)
 
 # - 주요 특징
 1. 컴포넌트간 데이터 전달을 위해 props와 vuex 라이브러리를 통한 중앙 집중식 저장소 방식 2가지를 사용 해보았다
@@ -48,7 +51,7 @@ function handlePageClick(pageVal) {
 }
 ```
 <video width="520" height="240" controls>
-  <source src="./img/1_page.mp4" type="video/mp4">
+  <source src="[./img/1_page.mp4](https://github.com/user-attachments/assets/aa33c65f-a520-45c3-b863-502236d786da)" type="video/mp4">
 </video>
 
 자식과 부모 사이는 하향식 단방향 바인딩 형태 이어야 하므로 클릭 이벤트 등에 대한 처리는 **emit** 이벤트를 호출 하여 구현 하였다.
@@ -133,3 +136,19 @@ function userUpdate(){
         commit('setRoleList', response.data);
 ```
 Role리스트를 호출 시 현재 팝업창에서 가져온 사용자의 Role 리스트를 제외한 리스트를 보여 주도록 하였다. Role 추가 후 저장 시 Role 데이터를 가진 state를 request 값으로 전달하여 사용자의 Role 정보가 업데이트 되도록 하였다.
+
+<video width="520" height="240" controls>
+  <source src="[./img/2_modify.mp4](https://github.com/user-attachments/assets/0b79938e-90ba-4baf-844c-a286309758f4)" type="video/mp4">
+</video>
+
+```js
+      await Axios.post('http://localhost:8090/api/v1/user/userUpdate',
+        {
+          id: state.userDetail.id,
+          loginId: state.userDetail.loginId,
+          userName: state.userDetail.userName,
+          userPassword: state.userDetail.userPassword,
+          roleUserSave: state.roleUserSave
+    /* 유저 정보 업데이트 시 업데이트 될 Role 리스트를 함께 전달 */
+      },
+```
