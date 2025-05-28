@@ -57,7 +57,7 @@ function handleDeleteClick(usersId) {
         v-model="props.currentPage"
         :length="props.pageLength"
         rounded="circle"
-        @update:model-value="handlePageClick"
-      ></v-pagination>
+        @update:model-value="handlePageClick">
+  </v-pagination>
 
   </template>

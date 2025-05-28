@@ -1,7 +1,5 @@
 # - 프로젝트 개요
-기존 React 프로젝트에 사용자 관리 메뉴를 통해 Spring Security의 사용자 Role 기능을 구현 하였고 실제 사용자를 관리하는 기능은 Vue.js를 통해 간단하게 구현해 보았다.
-
-# - 주요 구현 기능
+기존 React 프로젝트에 사용자 관리 메뉴를 통해 Spring Security의 사용자 Role 기능을 구현 하였고 실제 사용자를 관리하는 기능은 Vue.js를 통해 간단하게 구현해 보았다.  
 기능은 사용자의 리스트를 보여주는 페이지와 사용자의 정보를 변경하는 기능(사용자 이름과, Role 정보만 변경), 사용자를 삭제 하는 기능을 간단히 구현 하였다.
 
 또한 페이지의 Vue.js를 위한 디자인 UI 프레임워크 vuetify를 사용하여 구현으며 백엔드 부분의 데이터 처리를 위해 Axios 라이브러리를 사용 하였다.하였다.
@@ -12,8 +10,8 @@
 
 ![Image](https://github.com/user-attachments/assets/bfcaae53-b5cf-4950-beff-1a2242f587a9)
 
-# - 주요 특징
-1. 컴포넌트간 데이터 전달을 위해 props와 vuex 라이브러리를 통한 중앙 집중식 저장소 방식 2가지를 사용 해보았다
+# - 특이 사항
+### 1. 컴포넌트간 데이터 전달을 위해 props와 vuex 라이브러리를 통한 중앙 집중식 저장소 방식 2가지를 사용 해보았다
 
 #### 1.1 props 사용 방식
 
@@ -42,8 +40,8 @@ const props = defineProps(['userList', 'currentPage', 'pageLength', 'showModal']
         v-model="props.currentPage"
         :length="props.pageLength"
         rounded="circle"
-        @update:model-value="handlePageClick"
-      ></v-pagination>
+        @update:model-value="handlePageClick">
+  </v-pagination>
 ```
 ```js
 function handlePageClick(pageVal) {
@@ -51,7 +49,6 @@ function handlePageClick(pageVal) {
 }
 ```
 ![1_page](https://github.com/user-attachments/assets/90e7f1c7-5f58-40ca-82e4-a6911f056d15)
-
 
 자식과 부모 사이는 하향식 단방향 바인딩 형태 이어야 하므로 클릭 이벤트 등에 대한 처리는 **emit** 이벤트를 호출 하여 구현 하였다.
 
@@ -115,12 +112,12 @@ function userUpdate(){
   store.dispatch('userUpdate')
 }
 ```
-1. 사용자는 여러 Role을 가질 수 있으며 해당 Role을 가진 사용자가 다수 일수 가 있어 중간 관계 테이블을 추가하여 사용자와 Role관리 하도록 구성하였으며
+### 2. 사용자는 여러 Role을 가질 수 있으며 해당 Role을 가진 사용자가 다수가 존재 할 수 있어 중간 관계 테이블을 추가하여 사용자와 Role 데이터를 관리 하도록 구성 하였다.
 ```java
 .requestMatchers("/api/v1/admin/*").hasAnyRole("ADMIN", "MANAGER")
 .anyRequest().authenticated());
 ```
-백엔드 영역에서 Spring Security SecurityConfig에서도 관리자 권한을 여러 권한으로 체크 하도록 하였으므로 사용관 관리 페이지에서 사용자 수정 팝업업 호출 시 기존 사용자가 가진 권한을 DB에서 가져오도록 하였으며
+백엔드 영역에서 Spring Security SecurityConfig에서도 관리자 권한을 여러 권한으로 체크 하도록 하였으므로 사용관 관리 페이지에서 사용자 수정 팝업업 호출 시 기존 사용자가 가진 권한을 DB에서 가져오도록 하였다.
 ```js
     /* 추가 대상 Role 리스트 */
     async getRoleList ({ state, commit }) {
@@ -139,7 +136,6 @@ Role리스트를 호출 시 현재 팝업창에서 가져온 사용자의 Role �
 
 ![2_modify](https://github.com/user-attachments/assets/77c1f9c9-1256-437e-84dd-0ac3ed586c92)
 
-
 ```js
       await Axios.post('http://localhost:8090/api/v1/user/userUpdate',
         {
@@ -151,3 +147,6 @@ Role리스트를 호출 시 현재 팝업창에서 가져온 사용자의 Role �
     /* 유저 정보 업데이트 시 업데이트 될 Role 리스트를 함께 전달 */
       },
 ```
+
+# - 향후 계획
+react와 react 프레임워크인 nextjs를 통해 개인 프로젝트를 제작 후 react와 함께 가장 빈번히 언급되는 자바스크립트 프레임워크인 vue.js 접해 보기 위해 해당 프로젝트를 진행 하였으며 vue.js의 일부 기능만을 사용하여 진행 하였기 때문에 향후에는 vue-router 라이브러리, SSR, shallowRef등 심화된 내용 학습을 진행할 계획이며 state 관리 또한 vuex를 사용 해보았기에 Pinia 라이브러리를 통해 구성 해볼 계획이다.
