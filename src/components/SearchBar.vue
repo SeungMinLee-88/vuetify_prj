@@ -37,7 +37,7 @@
 
 <script setup>
 import { shallowRef  } from 'vue'
-const emit = defineEmits(['pageClick', 'selectFiled', 'inputSearch', 'mainPageClick'])
+const emit = defineEmits(['pageClick', 'selectFiled', 'inputSearch', 'mainPageClick']);
 
 const model = shallowRef('')
 const items = [{title: 'Id', value: "loginId"}, {title: 'Name', value: "userName"}];

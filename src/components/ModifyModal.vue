@@ -44,6 +44,7 @@ function roleListModal() {
   }
 
   store.dispatch('getRoleList')
+  store.commit('resetUpdateRoleList')
   store.commit('showRoleListModal')
 }
 function userUpdate(){
