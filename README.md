@@ -171,7 +171,7 @@ const userSearch = () => {
 ![Image](https://github.com/user-attachments/assets/10fc4ada-0717-4cc6-aa5f-1c36e33b87b1)
 
 #### 1.2 Vuex 라이브러리 사용 방식
-여러 컴포넌트간에 저장소 공유를 위해 Vuejs 애플리케이션에 대한 상태 관리 패턴 라이브러리인 Vuex를 사용해 보았으며 state와 mutations, 동기적인 작업 처리를 위한 actions를 store.js에 선언 하여 사용 하였다.
+여러 컴포넌트간에 저장소 공유를 위해 Vuejs 애플리케이션에 대한 상태 관리 패턴 라이브러리인 Vuex를 사용해 보았으며 state와 mutations, promise 결과에 따른 작업 처리를 위한 actions를 store.js에 선언 하여 사용 하였다.
 
 ##### 1.2.1 store.js
 - store.js
@@ -198,7 +198,7 @@ mutations: {
       state.showRoleListModal = !state.showRoleListModal
     },
     ...
-// Promise 반환 처리가 필요한 기능은 actions을 통해 정의한다.
+// Promise 반환 처리가 필요한 기능은 actions을 통해 정의한다. await 작업은 동기적이지만 Vuex 상태변이는 비동기적인 관점이다. 
 actions: {
 async getUserData ({ state, commit }) {
   await Axios.post('http://localhost:8090/api/v1/user/userDetail',
