@@ -2,8 +2,6 @@ import Vuex from 'vuex'
 import Axios from 'axios';
 export const store = new Vuex.Store({
   state: {
-    count: 0,
-    count2: 10,
     showModifyModal: false,
     showRoleListModal: false,
     userId: 0,
@@ -55,11 +53,9 @@ export const store = new Vuex.Store({
       store.state.updateRoleList.map((roles) =>{
       state.userDetail.roleUser.push(roles)
     })
-
-  }
-  ,
-  setRoleUserSave (state, roleUserSave) {
-    state.roleUserSave = roleUserSave;
+    },
+    setRoleUserSave (state, roleUserSave) {
+      state.roleUserSave = roleUserSave;
   }
   ,
   },
