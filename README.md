@@ -287,7 +287,7 @@ async userUpdate ({ state, commit }) {
 ![Image](https://github.com/user-attachments/assets/cae39db4-4a9f-4f46-9f11-dbe54fa440c2)
 
 ### 2. 사용자 권한 수정
-스프링 프로젝트에서 사용자는 여러 Role을 가질 수 있으며 해당 Role을 가진 사용자가 다수가 존재 할 수 있어 중간 관계 테이블을 추가하여 사용자와 권한 데이터를 관리 하도록 구성 하였다.
+스프링 프로젝트에서 사용자는 여러 권한을 가질 수 있으며 해당 권한을 가진 사용자가 다수가 존재 할 수 있어 중간 관계 테이블을 추가하여 사용자와 권한 데이터를 관리 하도록 구성 하였다.
 - 백엔드의 권한 제어 부분
 ```java
 .requestMatchers("/api/v1/admin/*").hasAnyRole("ADMIN", "MANAGER")
